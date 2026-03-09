@@ -39,7 +39,7 @@ class WelcomePageTest extends TestCase
                 ->where('portfolio.hero.name', 'Hi, I’m Rey Bien!')
                 ->where('portfolio.hero.title', 'A Computer Science Freshgraduate based in Cebu, Philippines.')
                 ->where('portfolio.hero.intro', 'I am passionate about building reliable web applications and learning modern technologies.')
-                ->where('portfolio.hero.portrait.src', '/images/rey-bien-profile.jpg')
+                ->where('portfolio.hero.portrait.src', '/images/Gemini_Generated_Image_1ooqy81ooqy81ooq.png')
                 ->where('portfolio.hero.portrait.alt', 'Portrait of Rey Bien')
                 ->where('portfolio.hero.portrait.fallback', 'RB')
                 ->where('portfolio.hero.availability', 'Available for product builds, redesigns, and full-stack delivery.')
@@ -64,6 +64,8 @@ class WelcomePageTest extends TestCase
                 ->where('portfolio.contact.links.1.icon', 'linkedin')
                 ->where('portfolio.contact.links.2.label', 'Facebook')
                 ->where('portfolio.contact.links.2.icon', 'facebook')
+                ->where('portfolio.contact.links.3.label', 'GitHub')
+                ->where('portfolio.contact.links.3.icon', 'github')
                 ->has('portfolio.projects', 4)
                 ->where('portfolio.projects.0.name', 'Laravel CRUD using PostgreSQL Database')
                 ->where('portfolio.projects.0.liveUrl', null)
@@ -74,8 +76,8 @@ class WelcomePageTest extends TestCase
                 ->where('portfolio.projects.3.name', 'My Portfolio System')
                 ->where('portfolio.projects.3.liveUrl', null)
                 ->has('portfolio.skills.groups', 3)
-                ->has('portfolio.contact.links', 3)
-                ->missing('portfolio.contact.links.3')
+                ->has('portfolio.contact.links', 4)
+                ->missing('portfolio.contact.links.4')
                 ->etc());
     }
 

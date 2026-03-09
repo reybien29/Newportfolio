@@ -171,10 +171,10 @@ function ProjectCard({ project }: { project: PortfolioProject }) {
             <a
                 href={project.href}
                 onClick={stopProjectCardClick}
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--accent)]"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--accent)] transition-all duration-300 hover:gap-3"
             >
                 Discuss a similar build
-                <span aria-hidden="true">→</span>
+                <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
         </article>
     );
@@ -245,6 +245,18 @@ function ContactIcon({ icon }: { icon: PortfolioLink['icon'] }) {
         );
     }
 
+    if (icon === 'github') {
+        return (
+            <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="h-7 w-7 fill-current"
+            >
+                <path d="M12 .5C5.649.5.5 5.649.5 12a11.5 11.5 0 0 0 7.86 10.913c.575.106.785-.25.785-.556 0-.274-.01-1-.016-1.962-3.197.695-3.872-1.54-3.872-1.54-.523-1.327-1.278-1.681-1.278-1.681-1.044-.714.079-.699.079-.699 1.154.081 1.76 1.185 1.76 1.185 1.026 1.759 2.692 1.251 3.348.956.103-.744.401-1.251.729-1.539-2.552-.29-5.236-1.276-5.236-5.682 0-1.255.448-2.281 1.183-3.085-.119-.29-.513-1.458.112-3.04 0 0 .965-.309 3.162 1.179a10.97 10.97 0 0 1 5.758 0c2.195-1.488 3.159-1.18 3.159-1.18.627 1.583.233 2.751.114 3.04.737.805 1.181 1.831 1.181 3.086 0 4.417-2.688 5.389-5.249 5.673.413.355.781 1.057.781 2.13 0 1.538-.014 2.778-.014 3.156 0 .309.207.668.79.555A11.503 11.503 0 0 0 23.5 12C23.5 5.649 18.351.5 12 .5Z" />
+            </svg>
+        );
+    }
+
     if (icon === 'gmail') {
         return (
             <svg
@@ -289,10 +301,12 @@ function ContactLinkButton({ item }: { item: PortfolioLink }) {
             rel={isExternalLink ? 'noreferrer' : undefined}
             aria-label={item.label}
             title={item.label}
-            className="group relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-[1.6rem] border border-[color:var(--border-glass)] bg-[radial-gradient(circle_at_top,_rgba(220,38,38,0.10),_transparent_52%),linear-gradient(180deg,_rgba(12,12,12,0.96),_rgba(6,6,6,0.98))] text-[color:var(--text-strong)] shadow-[0_18px_30px_rgba(0,0,0,0.30)] transition duration-300 hover:-translate-y-1 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+            className="group flex flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-[color:var(--border-glass)] bg-[linear-gradient(180deg,_rgba(18,18,18,0.95),_rgba(10,10,10,0.98))] px-6 py-5 text-[color:var(--text-muted)] shadow-[0_18px_30px_rgba(0,0,0,0.30)] transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] hover:shadow-[0_22px_40px_rgba(0,0,0,0.35),_0_0_20px_rgba(220,38,38,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
         >
-            <ContactIcon icon={item.icon} />
-            <span className="pointer-events-none absolute left-1/2 top-full mt-3 -translate-x-1/2 rounded-full border border-[color:var(--border-glass)] bg-[color:var(--surface-strong)] px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[color:var(--text-muted)] opacity-0 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+            <span className="transition-transform duration-300 group-hover:scale-110">
+                <ContactIcon icon={item.icon} />
+            </span>
+            <span className="text-xs font-medium tracking-wide">
                 {item.label}
             </span>
         </a>
@@ -303,9 +317,9 @@ function ProfilePortrait({ hero }: { hero: PortfolioHero }) {
     const [imageFailed, setImageFailed] = useState(false);
 
     return (
-        <div className="relative mx-auto w-full max-w-[260px]">
-            <div className="absolute inset-4 rounded-[2rem] bg-[radial-gradient(circle_at_top,_rgba(220,38,38,0.22),_transparent_60%)] blur-2xl" />
-            <div className="glass-inner relative overflow-hidden rounded-[2.2rem] border border-[color:var(--border-glass)] p-3 shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
+        <div className="group relative mx-auto w-full max-w-[260px]">
+            <div className="portrait-glow absolute inset-4 rounded-[2rem] bg-[radial-gradient(circle_at_top,_rgba(220,38,38,0.28),_transparent_60%)] blur-2xl transition-opacity duration-700 group-hover:opacity-80" />
+            <div className="glass-inner relative overflow-hidden rounded-[2.2rem] border border-[color:var(--border-glass)] p-3 shadow-[0_24px_60px_rgba(0,0,0,0.35)] transition-all duration-500 group-hover:border-[color:rgba(220,38,38,0.20)] group-hover:shadow-[0_28px_70px_rgba(0,0,0,0.40),_0_0_40px_rgba(220,38,38,0.06)]">
                 {imageFailed ? (
                     <div className="flex aspect-[4/5] items-center justify-center rounded-[1.8rem] bg-[linear-gradient(160deg,_rgba(220,38,38,0.20),_rgba(10,10,10,0.92)_58%)]">
                         <span className="font-display text-6xl tracking-[-0.08em] text-[color:var(--text-strong)]">
@@ -316,7 +330,7 @@ function ProfilePortrait({ hero }: { hero: PortfolioHero }) {
                     <img
                         src={hero.portrait.src}
                         alt={hero.portrait.alt}
-                        className="aspect-[4/5] w-full rounded-[1.8rem] object-cover object-center"
+                        className="aspect-[4/5] w-full rounded-[1.8rem] object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
                         onError={() => setImageFailed(true)}
                     />
                 )}
@@ -337,9 +351,19 @@ export default function Welcome({
             <Head title="Portfolio" />
 
             <div className="portfolio-shell min-h-screen pb-10">
-                <header className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-6 sm:px-6 lg:px-8">
+                {/* Fixed background overlay for enhanced depth */}
+                <div
+                    className="pointer-events-none fixed inset-0 z-0"
+                    aria-hidden="true"
+                    style={{
+                        background:
+                            'radial-gradient(ellipse at 20% 0%, rgba(220,38,38,0.07), transparent 50%), radial-gradient(ellipse at 80% 100%, rgba(220,38,38,0.05), transparent 50%)',
+                    }}
+                />
+
+                <header className="relative z-10 mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-6 sm:px-6 lg:px-8">
                     <div className="flex items-center gap-4">
-                        <div className="glass-inner flex h-12 w-12 items-center justify-center rounded-[1.3rem] text-lg font-bold text-[color:var(--text-strong)]">
+                        <div className="glass-inner flex h-12 w-12 items-center justify-center rounded-[1.3rem] text-lg font-bold text-[color:var(--text-strong)] transition-all duration-300 hover:border-[color:rgba(220,38,38,0.20)] hover:shadow-[0_0_20px_rgba(220,38,38,0.08)]">
                             {portfolio.hero.portrait.fallback}
                         </div>
                         <div>
@@ -347,41 +371,41 @@ export default function Welcome({
                                 {portfolio.hero.eyebrow}
                             </p>
                             <p className="mt-1 text-sm text-[color:var(--text-muted)]">
-                                Responsive bento portfolio
+                                Responsive Bento Portfolio
                             </p>
                         </div>
                     </div>
 
-                    <nav className="hidden items-center gap-6 text-sm font-medium text-[color:var(--text-muted)] md:flex">
+                    <nav className="hidden items-center gap-8 text-sm font-medium text-[color:var(--text-muted)] md:flex">
                         <a
                             href="#stack"
-                            className="transition hover:text-[color:var(--text-strong)]"
+                            className="nav-link-hover transition-colors duration-300 hover:text-[color:var(--text-strong)]"
                         >
                             Stack
                         </a>
                         <a
                             href="#projects"
-                            className="transition hover:text-[color:var(--text-strong)]"
+                            className="nav-link-hover transition-colors duration-300 hover:text-[color:var(--text-strong)]"
                         >
                             Projects
                         </a>
                         <a
                             href="#experience"
-                            className="transition hover:text-[color:var(--text-strong)]"
+                            className="nav-link-hover transition-colors duration-300 hover:text-[color:var(--text-strong)]"
                         >
                             Experience
                         </a>
                         <a
                             href="#contact"
-                            className="transition hover:text-[color:var(--text-strong)]"
+                            className="nav-link-hover transition-colors duration-300 hover:text-[color:var(--text-strong)]"
                         >
                             Contact
                         </a>
                     </nav>
                 </header>
 
-                <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="grid auto-rows-[minmax(220px,auto)] grid-cols-1 gap-4 md:grid-cols-6 xl:grid-cols-12 xl:gap-5">
+                <main className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div className="grid auto-rows-[minmax(220px,auto)] grid-cols-1 gap-5 md:grid-cols-6 md:gap-5 xl:grid-cols-12 xl:gap-6">
                         <PortfolioCard className="md:col-span-6 xl:col-span-7 xl:row-span-2">
                             <div className="flex h-full flex-col justify-between gap-10">
                                 <div className="grid gap-8 xl:grid-cols-[minmax(0,1.35fr)_260px] xl:items-start">
@@ -408,13 +432,13 @@ export default function Welcome({
                                         <div className="flex flex-wrap gap-3">
                                             <a
                                                 href={portfolio.hero.primaryAction.href}
-                                                className="rounded-full bg-[color:var(--accent)] px-5 py-3 text-sm font-semibold text-[#060606] transition-all duration-300 hover:bg-[#ef4444] hover:text-[#060606] hover:shadow-lg hover:shadow-[color:var(--accent-soft)]"
+                                                className="btn-shine rounded-full bg-[color:var(--accent)] px-6 py-3 text-sm font-semibold text-[#060606] transition-all duration-300 hover:bg-[#ef4444] hover:text-[#060606] hover:shadow-lg hover:shadow-[color:var(--accent-soft)] hover:scale-[1.03] active:scale-[0.98]"
                                             >
                                                 {portfolio.hero.primaryAction.label}
                                             </a>
                                             <a
                                                 href={portfolio.hero.secondaryAction.href}
-                                                className="rounded-full border border-[color:var(--border-glass)] bg-[color:var(--surface-strong)] px-5 py-3 text-sm font-semibold text-[color:var(--text-strong)] backdrop-blur-sm transition-all duration-300 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] hover:shadow-lg hover:shadow-[color:var(--accent-soft)]"
+                                                className="btn-shine rounded-full border border-[color:var(--border-glass)] bg-[color:var(--surface-strong)] px-6 py-3 text-sm font-semibold text-[color:var(--text-strong)] backdrop-blur-sm transition-all duration-300 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] hover:shadow-lg hover:shadow-[color:var(--accent-soft)] hover:scale-[1.03] active:scale-[0.98]"
                                             >
                                                 {portfolio.hero.secondaryAction.label}
                                             </a>
@@ -481,18 +505,42 @@ export default function Welcome({
                         </PortfolioCard>
 
                         <PortfolioCard
-                            id="github-activity"
-                            className="delay-2 md:col-span-6 xl:col-span-5 xl:row-span-2"
+                            id="social-links"
+                            className="delay-2 md:col-span-6 xl:col-span-5"
                         >
                             <div className="flex h-full flex-col justify-between gap-8">
                                 <div>
-                                    <SectionKicker label="GitHub" />
+                                    <SectionKicker label="Socials" />
                                     <h2 className="mt-5 font-display text-3xl tracking-[-0.03em] text-[color:var(--text-strong)]">
-                                        My account
+                                        Find me on
                                     </h2>
                                 </div>
 
-                                <div className="glass-inner flex flex-1 items-center justify-center rounded-[1.75rem] p-6">
+                                <div className="grid grid-cols-2 gap-4">
+                                    {/* LinkedIn Card */}
+                                    <a
+                                        href={
+                                            portfolio.contact.links.find(
+                                                (l) => l.icon === 'linkedin',
+                                            )?.href ?? '#'
+                                        }
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-[color:var(--border-glass)] bg-[linear-gradient(180deg,_rgba(22,22,22,0.96),_rgba(14,14,14,0.98))] px-8 py-8 text-[color:var(--text-muted)] transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] hover:shadow-[0_22px_40px_rgba(0,0,0,0.35),_0_0_20px_rgba(220,38,38,0.08)]"
+                                    >
+                                        <svg
+                                            aria-hidden="true"
+                                            viewBox="0 0 24 24"
+                                            className="h-8 w-8 fill-current transition-transform duration-300 group-hover:scale-110"
+                                        >
+                                            <path d="M5.44 8.72H8.8V19.5H5.44V8.72ZM7.12 3.5A1.95 1.95 0 1 1 7.1 7.4A1.95 1.95 0 0 1 7.12 3.5ZM10.9 8.72H14.1V10.2H14.15C14.6 9.35 15.7 8.45 17.33 8.45C20.72 8.45 21.35 10.6 21.35 13.4V19.5H17.99V14.1C17.99 12.82 17.96 11.17 16.2 11.17C14.42 11.17 14.15 12.55 14.15 14V19.5H10.9V8.72Z" />
+                                        </svg>
+                                        <span className="text-sm font-medium">
+                                            LinkedIn
+                                        </span>
+                                    </a>
+
+                                    {/* GitHub Card */}
                                     <a
                                         href={
                                             githubActivity.profileUrl ??
@@ -500,16 +548,18 @@ export default function Welcome({
                                         }
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="inline-flex items-center justify-center gap-3 rounded-full bg-[color:var(--text-strong)] px-6 py-3 text-sm font-semibold text-[#060606] transition-all duration-300 hover:bg-[color:var(--accent)] hover:text-[#060606] hover:shadow-lg hover:shadow-[color:var(--accent-soft)]"
+                                        className="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-[color:var(--border-glass)] bg-[linear-gradient(180deg,_rgba(22,22,22,0.96),_rgba(14,14,14,0.98))] px-8 py-8 text-[color:var(--text-muted)] transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] hover:shadow-[0_22px_40px_rgba(0,0,0,0.35),_0_0_20px_rgba(220,38,38,0.08)]"
                                     >
                                         <svg
                                             aria-hidden="true"
                                             viewBox="0 0 24 24"
-                                            className="h-5 w-5 fill-current"
+                                            className="h-8 w-8 fill-current transition-transform duration-300 group-hover:scale-110"
                                         >
                                             <path d="M12 .5C5.649.5.5 5.649.5 12a11.5 11.5 0 0 0 7.86 10.913c.575.106.785-.25.785-.556 0-.274-.01-1-.016-1.962-3.197.695-3.872-1.54-3.872-1.54-.523-1.327-1.278-1.681-1.278-1.681-1.044-.714.079-.699.079-.699 1.154.081 1.76 1.185 1.76 1.185 1.026 1.759 2.692 1.251 3.348.956.103-.744.401-1.251.729-1.539-2.552-.29-5.236-1.276-5.236-5.682 0-1.255.448-2.281 1.183-3.085-.119-.29-.513-1.458.112-3.04 0 0 .965-.309 3.162 1.179a10.97 10.97 0 0 1 5.758 0c2.195-1.488 3.159-1.18 3.159-1.18.627 1.583.233 2.751.114 3.04.737.805 1.181 1.831 1.181 3.086 0 4.417-2.688 5.389-5.249 5.673.413.355.781 1.057.781 2.13 0 1.538-.014 2.778-.014 3.156 0 .309.207.668.79.555A11.503 11.503 0 0 0 23.5 12C23.5 5.649 18.351.5 12 .5Z" />
                                         </svg>
-                                        Visit GitHub Account
+                                        <span className="text-sm font-medium">
+                                            GitHub
+                                        </span>
                                     </a>
                                 </div>
                             </div>
@@ -565,7 +615,7 @@ export default function Welcome({
                         >
                             <SectionKicker label={portfolio.contact.title} />
                             <div className="glass-inner mt-5 rounded-[1.75rem] p-5">
-                                <div className="grid max-w-[17rem] grid-cols-3 gap-4">
+                                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                                     {portfolio.contact.links.map((item) => (
                                         <ContactLinkButton
                                             key={item.label}
@@ -609,6 +659,19 @@ export default function Welcome({
                         </PortfolioCard>
                     </div>
                 </main>
+
+                {/* Footer */}
+                <footer className="relative z-10 mx-auto mt-16 max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
+                    <div className="section-divider" />
+                    <div className="flex flex-col items-center justify-between gap-4 pt-6 sm:flex-row">
+                        <p className="text-xs font-medium tracking-[0.15em] text-[color:var(--text-muted)]">
+                            © {new Date().getFullYear()} {portfolio.hero.name.replace(/^Hi, I'm |!$/g, '')}. All rights reserved.
+                        </p>
+                        <p className="text-xs text-[color:var(--text-muted)] opacity-60">
+                            Built with Laravel, React & Tailwind CSS
+                        </p>
+                    </div>
+                </footer>
             </div>
         </>
     );

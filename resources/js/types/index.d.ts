@@ -66,7 +66,8 @@ export type PortfolioLinkIcon =
     | 'linkedin'
     | 'facebook'
     | 'gmail'
-    | 'phone';
+    | 'phone'
+    | 'github';
 
 export interface PortfolioLink {
     label: string;

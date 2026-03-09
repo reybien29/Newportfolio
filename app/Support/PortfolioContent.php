@@ -53,7 +53,7 @@ class PortfolioContent
      *         links: array<int, array{
      *             label: string,
      *             href: string,
-     *             icon: 'instagram'|'linkedin'|'facebook'|'gmail'|'phone'
+     *             icon: 'instagram'|'linkedin'|'facebook'|'gmail'|'phone'|'github'
      *         }>
      *     }
      * }
@@ -74,7 +74,7 @@ class PortfolioContent
                 'title' => 'A Computer Science Freshgraduate based in Cebu, Philippines.',
                 'intro' => 'I am passionate about building reliable web applications and learning modern technologies.',
                 'portrait' => [
-                    'src' => '/images/rey-bien-profile.jpg',
+                    'src' => '/images/Gemini_Generated_Image_1ooqy81ooqy81ooq.png',
                     'alt' => 'Portrait of Rey Bien',
                     'fallback' => 'RB',
                 ],
@@ -282,6 +282,11 @@ class PortfolioContent
                         'label' => 'Facebook',
                         'href' => 'https://www.facebook.com/reybien.caneja',
                         'icon' => 'facebook',
+                    ],
+                    [
+                        'label' => 'GitHub',
+                        'href' => $githubProfileUrl,
+                        'icon' => 'github',
                     ],
                 ],
             ],
