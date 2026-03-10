@@ -1,19 +1,34 @@
 {
-  "framework": null,
-  "buildCommand": "npm run build",
-  "outputDirectory": "public",
-  "installCommand": "composer install --optimize-autoloader --no-dev",
-  "php": {
-    "version": "8.2"
-  },
-  "routes": [
-    {
-      "src": "/build/(.*)",
-      "dest": "/build/$1"
+    "version": 2,
+    "framework": null,
+    "installCommand": "npm install",
+    "buildCommand": "npm run build",
+    "outputDirectory": "public",
+    "functions": {
+        "api/index.php": {
+            "runtime": "vercel-php@0.7.2"
+        }
     },
-    {
-      "src": "/(.*)",
-      "dest": "/index.php"
+    "routes": [
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/api/index.php"
+        }
+    ],
+    "env": {
+        "APP_ENV": "production",
+        "APP_DEBUG": "false",
+        "APP_CONFIG_CACHE": "/tmp/config.php",
+        "APP_EVENTS_CACHE": "/tmp/events.php",
+        "APP_PACKAGES_CACHE": "/tmp/packages.php",
+        "APP_ROUTES_CACHE": "/tmp/routes.php",
+        "APP_SERVICES_CACHE": "/tmp/services.php",
+        "VIEW_COMPILED_PATH": "/tmp/views",
+        "CACHE_STORE": "array",
+        "SESSION_DRIVER": "array",
+        "LOG_CHANNEL": "stderr"
     }
-  ]
 }
