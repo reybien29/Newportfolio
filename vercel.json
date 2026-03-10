@@ -1,7 +1,19 @@
 {
+  "framework": null,
   "buildCommand": "npm run build",
-  "outputDirectory": "public/build",
+  "outputDirectory": "public",
+  "installCommand": "composer install --optimize-autoloader --no-dev",
+  "php": {
+    "version": "8.2"
+  },
   "routes": [
-    { "src": "/(.*)", "dest": "/index.html" }
+    {
+      "src": "/build/(.*)",
+      "dest": "/build/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.php"
+    }
   ]
 }
