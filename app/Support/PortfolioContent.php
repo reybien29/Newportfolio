@@ -13,7 +13,7 @@ class PortfolioContent
      *         intro: string,
      *         portrait: array{src: string, alt: string, fallback: string},
      *         availability: string,
-     *         metrics: array<int, array{label: string, value: string}>,
+     *         nowPlaying: array{title: string, artist: string, album: string, coverImage: string, audioSrc: string},
      *         primaryAction: array{label: string, href: string},
      *         secondaryAction: array{label: string, href: string}
      *     },
@@ -79,10 +79,12 @@ class PortfolioContent
                     'fallback' => 'RB',
                 ],
                 'availability' => 'Available for product builds, redesigns, and full-stack delivery.',
-                'metrics' => [
-                    ['label' => 'Location', 'value' => 'Cebu, Philippines'],
-                    ['label' => 'Background', 'value' => 'Computer Science'],
-                    ['label' => 'Focus', 'value' => 'Reliable web applications'],
+                'nowPlaying' => [
+                    'title' => 'Starboy',
+                    'artist' => 'The Weeknd ft. Daft Punk',
+                    'album' => 'Starboy',
+                    'coverImage' => '/images/Gemini_Generated_Image_7ybqte7ybqte7ybq.png',
+                    'audioSrc' => '/audio/THEWEEKND_-_S_T_A_R_B_O_Y_(mp3.pm).mp3',
                 ],
                 'primaryAction' => [
                     'label' => 'View Projects',

@@ -10,9 +10,12 @@ export interface PortfolioAction {
     href: string;
 }
 
-export interface PortfolioMetric {
-    label: string;
-    value: string;
+export interface NowPlaying {
+    title: string;
+    artist: string;
+    album: string;
+    coverImage: string;
+    audioSrc: string;
 }
 
 export interface PortfolioHero {
@@ -26,7 +29,7 @@ export interface PortfolioHero {
         fallback: string;
     };
     availability: string;
-    metrics: PortfolioMetric[];
+    nowPlaying: NowPlaying;
     primaryAction: PortfolioAction;
     secondaryAction: PortfolioAction;
 }

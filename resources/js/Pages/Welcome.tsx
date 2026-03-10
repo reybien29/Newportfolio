@@ -1,3 +1,4 @@
+import AudioPlayer from '@/Components/AudioPlayer';
 import {
     GitHubActivity,
     PageProps,
@@ -448,20 +449,8 @@ export default function Welcome({
                                         </p>
                                     </div>
 
-                                    <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-                                        {portfolio.hero.metrics.map((metric) => (
-                                            <div
-                                                key={metric.label}
-                                                className="glass-inner rounded-[1.5rem] p-4"
-                                            >
-                                                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[color:var(--text-muted)]">
-                                                    {metric.label}
-                                                </p>
-                                                <p className="mt-3 text-base font-bold text-[color:var(--text-strong)]">
-                                                    {metric.value}
-                                                </p>
-                                            </div>
-                                        ))}
+                                    <div className="flex items-end">
+                                        <AudioPlayer track={portfolio.hero.nowPlaying} />
                                     </div>
                                 </div>
                             </div>
@@ -561,6 +550,57 @@ export default function Welcome({
                                             GitHub
                                         </span>
                                     </a>
+
+                                    {/* Facebook Card */}
+                                    <a
+                                        href={
+                                            portfolio.contact.links.find(
+                                                (l) => l.icon === 'facebook',
+                                            )?.href ?? '#'
+                                        }
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-[color:var(--border-glass)] bg-[linear-gradient(180deg,_rgba(22,22,22,0.96),_rgba(14,14,14,0.98))] px-8 py-8 text-[color:var(--text-muted)] transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] hover:shadow-[0_22px_40px_rgba(0,0,0,0.35),_0_0_20px_rgba(220,38,38,0.08)]"
+                                    >
+                                        <svg
+                                            aria-hidden="true"
+                                            viewBox="0 0 24 24"
+                                            className="h-8 w-8 fill-current transition-transform duration-300 group-hover:scale-110"
+                                        >
+                                            <path d="M13.37 20.5V12.98H15.88L16.26 10.06H13.37V8.2C13.37 7.35 13.61 6.76 14.84 6.76H16.36V4.15C15.62 4.05 14.88 4 14.13 4C11.9 4 10.36 5.36 10.36 7.86V10.06H8V12.98H10.36V20.5H13.37Z" />
+                                        </svg>
+                                        <span className="text-sm font-medium">
+                                            Facebook
+                                        </span>
+                                    </a>
+
+                                    {/* Instagram Card */}
+                                    <a
+                                        href={
+                                            portfolio.contact.links.find(
+                                                (l) => l.icon === 'instagram',
+                                            )?.href ?? '#'
+                                        }
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-[color:var(--border-glass)] bg-[linear-gradient(180deg,_rgba(22,22,22,0.96),_rgba(14,14,14,0.98))] px-8 py-8 text-[color:var(--text-muted)] transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] hover:shadow-[0_22px_40px_rgba(0,0,0,0.35),_0_0_20px_rgba(220,38,38,0.08)]"
+                                    >
+                                        <svg
+                                            aria-hidden="true"
+                                            viewBox="0 0 24 24"
+                                            className="h-8 w-8"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="1.8"
+                                        >
+                                            <rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5.25" />
+                                            <circle cx="12" cy="12" r="4.25" />
+                                            <circle cx="17.2" cy="6.8" r="1.05" fill="currentColor" stroke="none" />
+                                        </svg>
+                                        <span className="text-sm font-medium">
+                                            Instagram
+                                        </span>
+                                    </a>
                                 </div>
                             </div>
                         </PortfolioCard>
@@ -616,12 +656,7 @@ export default function Welcome({
                             <SectionKicker label={portfolio.contact.title} />
                             <div className="glass-inner mt-5 rounded-[1.75rem] p-5">
                                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                                    {portfolio.contact.links.map((item) => (
-                                        <ContactLinkButton
-                                            key={item.label}
-                                            item={item}
-                                        />
-                                    ))}
+                                    {/* Social links moved to SOCIALS section */}
                                 </div>
 
                                 <div className="mt-10 grid gap-4 lg:grid-cols-3">
