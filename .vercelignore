@@ -1,5 +1,14 @@
 /node_modules
 /vendor
+/.git
+/.github
+/.cursor
+/storage
+/bootstrap/cache/*.php
+/tests
+
+/node_modules
+/vendor
 /tests
 /storage/logs
 /storage/framework/cache

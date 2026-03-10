@@ -2,7 +2,7 @@
     "version": 2,
     "framework": null,
     "installCommand": "npm install",
-    "buildCommand": "npm run build",
+    "buildCommand": "npx --node-options=\"--max_old_space_size=2048\" vite build",
     "outputDirectory": "public",
     "functions": {
         "api/index.php": {
