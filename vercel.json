@@ -1,4 +1,7 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "public/build"
+  "outputDirectory": "public/build",
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 }
