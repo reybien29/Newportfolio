@@ -5,6 +5,7 @@
     "scripts": {
         "build": "tsc && vite build",
         "dev": "vite"
+      
     },
     "devDependencies": {
         "@headlessui/react": "^2.0.0",
