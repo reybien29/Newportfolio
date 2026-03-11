@@ -71,7 +71,7 @@ class PortfolioContent
             'hero' => [
                 'eyebrow' => 'About Me',
                 'name' => 'Hi, I’m Rey Bien!',
-                'title' => 'A Computer Science Freshgraduate based in Cebu, Philippines.',
+                'title' => 'A Computer Science Fresh graduate based in Cebu, Philippines.',
                 'intro' => 'I am passionate about building reliable web applications and learning modern technologies.',
                 'portrait' => [
                     'src' => '/images/Gemini_Generated_Image_1ooqy81ooqy81ooq.png',
@@ -97,7 +97,7 @@ class PortfolioContent
             ],
             'stack' => [
                 'title' => 'Stack',
-                'heading' => 'Stack I use',
+                'heading' => 'Stacks I use',
                 'description' => 'A compact view of the tools and technologies I use daily for building, collaborating, and shipping products.',
                 'items' => [
                     [
