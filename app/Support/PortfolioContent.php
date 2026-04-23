@@ -108,6 +108,34 @@ class PortfolioContent
                         'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg',
                     ],
                     [
+                        'name' => 'Codex',
+                        'category' => 'AI',
+                        'monogram' => 'Cx',
+                        'accent' => '#10b981',
+                        'logo' => '',
+                    ],
+                    [
+                        'name' => 'Claude Code',
+                        'category' => 'AI',
+                        'monogram' => 'Cc',
+                        'accent' => '#f59e0b',
+                        'logo' => '',
+                    ],
+                    [
+                        'name' => 'TypeScript',
+                        'category' => 'Language',
+                        'monogram' => 'Ts',
+                        'accent' => '#3178c6',
+                        'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+                    ],
+                    [
+                        'name' => 'Figma',
+                        'category' => 'Design',
+                        'monogram' => 'Fg',
+                        'accent' => '#f24e1e',
+                        'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
+                    ],
+                    [
                         'name' => 'Cursor',
                         'category' => 'IDE',
                         'monogram' => 'Cu',
@@ -204,6 +232,15 @@ class PortfolioContent
                 ],
             ],
             'projects' => [
+                [
+                    'name' => 'Contact Management System',
+                    'summary' => 'A streamlined contact management solution for organizing personal and professional networks, featuring categorization, quick search, and intuitive data entry.',
+                    'role' => 'Full-stack Developer',
+                    'stack' => ['Laravel', 'PHP', 'Blade', 'MySQL'],
+                    'href' => '#contact',
+                    'liveUrl' => 'https://konek-main-qdmf3m.free.laravel.cloud/',
+                    'repoHref' => $githubProfileUrl,
+                ],
                 [
                     'name' => 'Tournament Management System (TMS)',
                     'summary' => 'A comprehensive platform for organizing sports tournaments, featuring automated bracket generation, team registrations, and real-time standings tracking.',
